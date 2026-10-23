@@ -1,0 +1,6 @@
+{
+  "name": "Pooja Booking & Pandit Appointment Management System",
+  "description": "Production-ready pooja booking and pandit appointment management platform with real-time slot conflict protection, catalog management, and admin workflows.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

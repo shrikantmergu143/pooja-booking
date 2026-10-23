@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --primary: #7A1C24;
+    --primary-hover: #5E141B;
+    --accent: #D97706;
+    --accent-hover: #B45309;
+    --canvas: #FAF7F2;
+    --surface: #FFFFFF;
+  }
+
+  body {
+    background-color: #FAF7F2;
+    color: #292524;
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+  }
+
+  h1, h2, h3, .font-serif-title {
+    font-family: 'Cinzel', serif;
+  }
+}
+
+/* Ant Design customizations for warm devotional theme */
+.ant-btn-primary {
+  background-color: #7A1C24 !important;
+  border-color: #7A1C24 !important;
+}
+
+.ant-btn-primary:hover {
+  background-color: #5E141B !important;
+  border-color: #5E141B !important;
+}
+
+.ant-steps-item-process .ant-steps-item-icon {
+  background-color: #7A1C24 !important;
+  border-color: #7A1C24 !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon {
+  border-color: #7A1C24 !important;
+}
+
+.ant-steps-item-finish .ant-steps-item-icon > .ant-steps-icon {
+  color: #7A1C24 !important;
+}
+
+.ant-steps-item-finish > .ant-steps-item-container > .ant-steps-item-tail::after {
+  background-color: #7A1C24 !important;
+}
+
+.ant-tag-gold {
+  color: #B45309 !important;
+  background: #FEF3C7 !important;
+  border-color: #FDE68A !important;
+}
+
+.ant-tabs-ink-bar {
+  background: #7A1C24 !important;
+}
+
+.ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+  color: #7A1C24 !important;
+}
