@@ -135,14 +135,16 @@ export const AppHeader: React.FC = () => {
         </nav>
 
         {/* Zone 3: 1 Primary Action */}
-        <div className="flex items-center gap-3 shrink-0">
-          <Link
-            to="/book"
-            className="px-5 py-2.5 text-sm font-semibold text-white bg-[#7A1C24] hover:bg-[#5E141B] rounded-lg shadow-sm transition-all whitespace-nowrap active:scale-95 flex items-center gap-1.5"
-          >
-            <span>Book a Pooja</span>
-          </Link>
-        </div>
+        {!hidePublicCeremonyNavigation && (
+          <div className="flex items-center gap-3 shrink-0">
+            <Link
+              to="/book"
+              className="px-5 py-2.5 text-sm font-semibold text-white bg-[#7A1C24] hover:bg-[#5E141B] rounded-lg shadow-sm transition-all whitespace-nowrap active:scale-95 flex items-center gap-1.5"
+            >
+              <span>Book a Pooja</span>
+            </Link>
+          </div>
+        )}
       </div>
     </header>
   );

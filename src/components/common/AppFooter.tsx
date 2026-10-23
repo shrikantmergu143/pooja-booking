@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Flame, ShieldCheck, Clock, Award, Phone, Mail, MapPin } from 'lucide-react';
 import { AppSettings } from '../../types/index.ts';
 import { api } from '../../services/api.ts';
+import { hidePublicCeremonyNavigation } from '../../config/features.ts';
 
 export const AppFooter: React.FC = () => {
   const [settings, setSettings] = useState<AppSettings | null>(null);
@@ -35,19 +36,20 @@ export const AppFooter: React.FC = () => {
             </div>
           </div>
 
-          {/* Quick Pooja Links */}
-          <div className="space-y-3">
-            <h4 className="text-sm font-semibold text-amber-200 font-serif-title uppercase tracking-wider">
-              Popular Poojas
-            </h4>
-            <ul className="space-y-2 text-xs text-stone-400">
-              <li><Link to="/poojas/ganesh-puja-havan" className="hover:text-amber-300 transition-colors">Ganesh Puja & Havan</Link></li>
-              <li><Link to="/poojas/griha-pravesh-vastu-shanti" className="hover:text-amber-300 transition-colors">Griha Pravesh & Vastu</Link></li>
-              <li><Link to="/poojas/satyanarayan-puja-katha" className="hover:text-amber-300 transition-colors">Satyanarayan Katha</Link></li>
-              <li><Link to="/poojas/maha-rudrabhishek-puja" className="hover:text-amber-300 transition-colors">Maha Rudrabhishek</Link></li>
-              <li><Link to="/book?type=custom" className="hover:text-amber-300 transition-colors">Request Custom Vedic Ritual</Link></li>
-            </ul>
-          </div>
+          {!hidePublicCeremonyNavigation && (
+            <div className="space-y-3">
+              <h4 className="text-sm font-semibold text-amber-200 font-serif-title uppercase tracking-wider">
+                Popular Poojas
+              </h4>
+              <ul className="space-y-2 text-xs text-stone-400">
+                <li><Link to="/poojas/ganesh-puja-havan" className="hover:text-amber-300 transition-colors">Ganesh Puja & Havan</Link></li>
+                <li><Link to="/poojas/griha-pravesh-vastu-shanti" className="hover:text-amber-300 transition-colors">Griha Pravesh & Vastu</Link></li>
+                <li><Link to="/poojas/satyanarayan-puja-katha" className="hover:text-amber-300 transition-colors">Satyanarayan Katha</Link></li>
+                <li><Link to="/poojas/maha-rudrabhishek-puja" className="hover:text-amber-300 transition-colors">Maha Rudrabhishek</Link></li>
+                <li><Link to="/book?type=custom" className="hover:text-amber-300 transition-colors">Request Custom Vedic Ritual</Link></li>
+              </ul>
+            </div>
+          )}
 
           {/* Devotee Assurance */}
           <div className="space-y-3">
@@ -111,10 +113,14 @@ export const AppFooter: React.FC = () => {
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-xs text-stone-500 gap-4">
           <p>© {new Date().getFullYear()} BookMyPooja Online. All Rights Reserved.</p>
           <div className="flex items-center gap-6">
-            <Link to="/poojas" className="hover:text-stone-300">Ceremonies</Link>
-            <span>·</span>
-            <Link to="/track" className="hover:text-stone-300">Booking Status</Link>
-            <span>·</span>
+            {!hidePublicCeremonyNavigation && (
+              <>
+                <Link to="/poojas" className="hover:text-stone-300">Ceremonies</Link>
+                <span>·</span>
+                <Link to="/track" className="hover:text-stone-300">Booking Status</Link>
+                <span>·</span>
+              </>
+            )}
             <Link to="/about-us" className="hover:text-stone-300">About Us</Link>
             <span>·</span>
             <Link to="/privacy-policy" className="hover:text-stone-300">Privacy Policy</Link>

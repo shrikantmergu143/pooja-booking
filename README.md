@@ -54,8 +54,8 @@ The frontend uses the NestJS API at `http://localhost:4000` by default. Set
 `VITE_API_BASE_URL` in the root `.env` if the backend is hosted elsewhere.
 Set `VITE_HIDE_PANDIT_APPOINTMENT=true` in the frontend `.env` to hide the
 All Poojas, Griha Pravesh, Havans & Kathas, Rudrabhishek, and Check Status links
-from the public header. About Us, Book Appointment, and Book a Pooja remain
-visible, and all routes and booking functionality remain available.
+and pooja/booking links from the public header and footer. About Us and Book
+Appointment remain visible, and all routes and booking functionality remain available.
 
 For a local setup:
 
