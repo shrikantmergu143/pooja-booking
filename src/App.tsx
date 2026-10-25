@@ -8,36 +8,38 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store } from './store/index.ts';
 import { ConfigProvider } from 'antd';
+import { ToastContainer } from 'react-toastify';
 
 // Layouts
 import { PublicLayout } from './layouts/PublicLayout.tsx';
 import { AdminLayout } from './layouts/AdminLayout.tsx';
 
 // Public Pages
-import { HomePage } from './pages/public/HomePage.tsx';
-import { PoojaListingPage } from './pages/public/PoojaListingPage.tsx';
-import { PoojaDetailPage } from './pages/public/PoojaDetailPage.tsx';
-import { BookingWizardPage } from './pages/public/BookingWizardPage.tsx';
-import { BookingLookupPage } from './pages/public/BookingLookupPage.tsx';
-import { ContactPage } from './pages/public/ContactPage.tsx';
-import { AppointmentBookingPage } from './pages/public/AppointmentBookingPage.tsx';
-import { AdminAppointmentsPage } from './pages/admin/AdminAppointmentsPage.tsx';
-import { ContentPage } from './pages/public/ContentPage.tsx';
-import { AboutUsPage } from './pages/public/AboutUsPage.tsx';
+import { HomePage } from './legacy-pages/public/HomePage.tsx';
+import { PoojaListingPage } from './legacy-pages/public/PoojaListingPage.tsx';
+import { PoojaDetailPage } from './legacy-pages/public/PoojaDetailPage.tsx';
+import { BookingWizardPage } from './legacy-pages/public/BookingWizardPage.tsx';
+import { BookingLookupPage } from './legacy-pages/public/BookingLookupPage.tsx';
+import { ContactPage } from './legacy-pages/public/ContactPage.tsx';
+import { AppointmentBookingPage } from './legacy-pages/public/AppointmentBookingPage.tsx';
+import { AdminAppointmentsPage } from './legacy-pages/admin/AdminAppointmentsPage.tsx';
+import { ContentPage } from './legacy-pages/public/ContentPage.tsx';
+import { AboutUsPage } from './legacy-pages/public/AboutUsPage.tsx';
 
 // Admin Pages
-import { AdminLoginPage } from './pages/admin/AdminLoginPage.tsx';
-import { AdminDashboardPage } from './pages/admin/AdminDashboardPage.tsx';
-import { AdminBookingsPage } from './pages/admin/AdminBookingsPage.tsx';
-import { AdminCatalogPage } from './pages/admin/AdminCatalogPage.tsx';
-import { AdminPanditsPage } from './pages/admin/AdminPanditsPage.tsx';
-import { AdminCustomQuotesPage } from './pages/admin/AdminCustomQuotesPage.tsx';
-import { AdminNotificationsPage } from './pages/admin/AdminNotificationsPage.tsx';
-import { AdminSettingsPage } from './pages/admin/AdminSettingsPage.tsx';
-import { AdminContactMessagesPage } from './pages/admin/AdminContactMessagesPage.tsx';
+import { AdminLoginPage } from './legacy-pages/admin/AdminLoginPage.tsx';
+import { AdminDashboardPage } from './legacy-pages/admin/AdminDashboardPage.tsx';
+import { AdminBookingsPage } from './legacy-pages/admin/AdminBookingsPage.tsx';
+import { AdminCatalogPage } from './legacy-pages/admin/AdminCatalogPage.tsx';
+import { AdminPanditsPage } from './legacy-pages/admin/AdminPanditsPage.tsx';
+import { AdminCustomQuotesPage } from './legacy-pages/admin/AdminCustomQuotesPage.tsx';
+import { AdminNotificationsPage } from './legacy-pages/admin/AdminNotificationsPage.tsx';
+import { AdminSettingsPage } from './legacy-pages/admin/AdminSettingsPage.tsx';
+import { AdminContactMessagesPage } from './legacy-pages/admin/AdminContactMessagesPage.tsx';
+import { hidePublicCeremonies } from './config/features.ts';
 
 const AdminContentPagesPage = lazy(() =>
-  import('./pages/admin/AdminContentPagesPage.tsx').then((module) => ({
+  import('./legacy-pages/admin/AdminContentPagesPage.tsx').then((module) => ({
     default: module.AdminContentPagesPage,
   })),
 );
@@ -56,16 +58,29 @@ export default function App() {
           },
         }}
       >
+        <ToastContainer position="top-right" />
         <BrowserRouter>
           <Routes>
             {/* Public Devotee Routes */}
             <Route path="/" element={<PublicLayout />}>
               <Route index element={<HomePage />} />
-              <Route path="poojas" element={<PoojaListingPage />} />
-              <Route path="poojas/:slug" element={<PoojaDetailPage />} />
-              <Route path="book" element={<BookingWizardPage />} />
+              <Route
+                path="poojas"
+                element={hidePublicCeremonies ? <Navigate to="/" replace /> : <PoojaListingPage />}
+              />
+              <Route
+                path="poojas/:slug"
+                element={hidePublicCeremonies ? <Navigate to="/" replace /> : <PoojaDetailPage />}
+              />
+              <Route
+                path="book"
+                element={hidePublicCeremonies ? <Navigate to="/" replace /> : <BookingWizardPage />}
+              />
               <Route path="appointment" element={<AppointmentBookingPage />} />
-              <Route path="track" element={<BookingLookupPage />} />
+              <Route
+                path="track"
+                element={hidePublicCeremonies ? <Navigate to="/" replace /> : <BookingLookupPage />}
+              />
               <Route path="contact" element={<ContactPage />} />
               <Route path="about-us" element={<AboutUsPage />} />
               <Route path=":slug" element={<ContentPage />} />

@@ -118,12 +118,17 @@ export interface Pooja {
   supportedCities: string[];
   imageUrl: string;
   isActive: boolean;
+  seoTitle?: string;
+  seoDescription?: string;
   packages: PoojaPackage[];
   addons: PoojaAddon[];
   quote?: string;
   allowCustomQuote?: boolean;
   customQuoteStartingPrice?: number;
   customQuoteNotes?: string;
+  category?: PoojaCategory;
+  createdAt?: string;
+  updatedAt?: string;
 }
 
 export interface PanditScheduleSlot {
@@ -271,6 +276,10 @@ export interface NotificationLog {
 
 export interface AppSettings {
   businessName: string;
+  websiteName?: string;
+  websiteSubtitle?: string;
+  websiteDomain?: string;
+  logoUrl?: string;
   helplinePhone: string;
   supportEmail: string;
   serviceAddress: string;

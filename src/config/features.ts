@@ -1,2 +1,3 @@
-export const hidePublicCeremonyNavigation =
-  import.meta.env.VITE_HIDE_PANDIT_APPOINTMENT === 'true';
+import { publicEnvironment } from './public-env.ts';
+
+export const hidePublicCeremonies = publicEnvironment.hidePublicCeremonies;

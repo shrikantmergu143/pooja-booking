@@ -42,7 +42,7 @@ A production-grade, full-stack devotional ceremony booking and appointment manag
 
 ## 🛠️ Technology Stack
 
-- **Frontend**: React 19, TypeScript, Vite, React Router 7, Ant Design, Tailwind CSS v4, Lucide Icons, Day.js
+- **Frontend**: Next.js, React 19, TypeScript, React Router 7, Ant Design, Tailwind CSS v4, Lucide Icons, Day.js
 - **State Management**: Redux Toolkit & LocalStorage session persistence
 - **Architecture**: Authoritative relational data engine with interval-based appointment conflict protection and commercial snapshots
 
@@ -50,12 +50,19 @@ A production-grade, full-stack devotional ceremony booking and appointment manag
 
 ## Backend and admin setup
 
-The frontend uses the NestJS API at `http://localhost:4000` by default. Set
-`VITE_API_BASE_URL` in the root `.env` if the backend is hosted elsewhere.
-Set `VITE_HIDE_PANDIT_APPOINTMENT=true` in the frontend `.env` to hide the
-All Poojas, Griha Pravesh, Havans & Kathas, Rudrabhishek, and Check Status links
-and pooja/booking links from the public header and footer. About Us and Book
-Appointment remain visible, and all routes and booking functionality remain available.
+The frontend uses the Next.js App Router and the NestJS API at
+`http://localhost:4000` by default. Set `NEXT_PUBLIC_API_BASE_URL` in the root
+`.env` if the backend is hosted elsewhere. Set
+`NEXT_PUBLIC_HIDE_PUBLIC_CEREMONIES=true` to hide public ceremony browsing,
+booking, and tracking links and routes. The admin catalog remains available,
+and standalone appointment requests remain available. The admin settings page
+shows the effective deployment setting; it is intentionally read-only and
+must be changed in the deployment environment, followed by a rebuild/restart.
+`NEXT_PUBLIC_SITE_URL` can override the canonical website origin for metadata.
+The previous `VITE_API_BASE_URL` and `VITE_HIDE_PANDIT_APPOINTMENT` variables
+are accepted as migration fallbacks; prefer the `NEXT_PUBLIC_` names for new
+deployments. The home page is server-rendered in the App Router; existing
+booking and admin workflows are preserved through a compatibility route.
 
 For a local setup:
 

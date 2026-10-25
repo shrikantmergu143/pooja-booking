@@ -86,6 +86,14 @@ export class CreatePoojaDto {
 
   @IsOptional()
   @IsString()
+  seoTitle?: string;
+
+  @IsOptional()
+  @IsString()
+  seoDescription?: string;
+
+  @IsOptional()
+  @IsString()
   quote?: string;
 
   @IsOptional()

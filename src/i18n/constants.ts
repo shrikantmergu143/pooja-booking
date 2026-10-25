@@ -1,0 +1,1 @@
+export const LANGUAGE_STORAGE_KEY = 'POOJA_LANGUAGE';

@@ -1,9 +1,32 @@
-import { IsBoolean, IsEmail, IsInt, IsOptional, IsString, Min, ValidateIf } from 'class-validator';
+import { IsBoolean, IsEmail, IsInt, IsOptional, IsString, IsUrl, Matches, MaxLength, Min, ValidateIf } from 'class-validator';
 
 export class UpdateSettingsDto {
   @IsOptional()
   @IsString()
   businessName?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(120)
+  websiteName?: string;
+
+  @IsOptional()
+  @IsString()
+  @MaxLength(160)
+  websiteSubtitle?: string;
+
+  @ValidateIf((_object, value) => value !== undefined && value !== '')
+  @IsUrl({ protocols: ['http', 'https'], require_protocol: true })
+  @Matches(/^https?:\/\/[^/?#]+\/?$/i, {
+    message: 'websiteDomain must contain only an HTTP(S) domain and optional trailing slash.',
+  })
+  @MaxLength(2048)
+  websiteDomain?: string;
+
+  @ValidateIf((_object, value) => value !== undefined && value !== '')
+  @IsUrl({ protocols: ['http', 'https'], require_protocol: true })
+  @MaxLength(2048)
+  logoUrl?: string;
 
   @IsOptional()
   @IsString()

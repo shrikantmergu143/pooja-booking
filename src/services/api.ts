@@ -14,9 +14,10 @@ import {
   Pooja,
   PoojaCategory,
 } from '../types/index.ts';
+import { LANGUAGE_STORAGE_KEY } from '../i18n/constants.ts';
+import { publicEnvironment } from '../config/public-env.ts';
 
-const API_ORIGIN = (import.meta.env.VITE_API_BASE_URL || 'http://localhost:4000').replace(/\/+$/, '');
-const BASE_URL = `${API_ORIGIN}/api/v1`;
+const BASE_URL = `${publicEnvironment.apiBaseUrl}/api/v1`;
 const ADMIN_SESSION_KEY = 'POOJA_ADMIN_SESSION';
 
 function slugify(value?: string) {
@@ -64,6 +65,7 @@ export interface BookingRequest {
 
 async function httpRequest<T>(endpoint: string, options: RequestInit = {}): Promise<T> {
   const headers = new Headers(options.headers || {});
+  headers.set('Accept-Language', localStorage.getItem(LANGUAGE_STORAGE_KEY) === 'mr' ? 'mr' : 'en');
   if (options.body && !headers.has('Content-Type')) {
     headers.set('Content-Type', 'application/json');
   }
@@ -423,7 +425,15 @@ export const api = {
   },
 
   async upsertPooja(pooja: Partial<Pooja>): Promise<Pooja> {
-    const { id, categoryName: _categoryName, packages: _packages, ...body } = pooja;
+    const {
+      id,
+      categoryName: _categoryName,
+      category: _category,
+      packages: _packages,
+      createdAt: _createdAt,
+      updatedAt: _updatedAt,
+      ...body
+    } = pooja;
     const requestBody = {
       ...body,
       slug: body.slug || slugify(body.name),

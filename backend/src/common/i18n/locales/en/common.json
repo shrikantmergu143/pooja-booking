@@ -1,0 +1,13 @@
+{
+  "Invalid administrator credentials.": "Invalid administrator credentials.",
+  "An administrator account with this email already exists.": "An administrator account with this email already exists.",
+  "Provide at least the last four digits of the booking phone number.": "Provide at least the last four digits of the booking phone number.",
+  "Booking not found": "Booking not found",
+  "Booking reference or phone verification did not match.": "Booking reference or phone verification did not match.",
+  "Pooja and Package are required for standard bookings.": "Pooja and Package are required for standard bookings.",
+  "Pooja not found": "Pooja not found",
+  "Selected package not found": "Selected package not found",
+  "A name is required for custom bookings.": "A name is required for custom bookings.",
+  "Appointment start time is invalid.": "Appointment start time is invalid.",
+  "Date of birth must be a valid date in the past.": "Date of birth must be a valid date in the past."
+}

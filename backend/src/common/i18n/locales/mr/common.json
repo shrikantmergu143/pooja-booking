@@ -1,0 +1,13 @@
+{
+  "Invalid administrator credentials.": "प्रशासकाचे लॉगिन तपशील चुकीचे आहेत.",
+  "An administrator account with this email already exists.": "या ईमेल पत्त्याने प्रशासकाचे खाते आधीपासून अस्तित्वात आहे.",
+  "Provide at least the last four digits of the booking phone number.": "बुकिंगसाठी फोन क्रमांकाचे शेवटचे किमान चार अंक द्या.",
+  "Booking not found": "बुकिंग सापडले नाही",
+  "Booking reference or phone verification did not match.": "बुकिंग संदर्भ क्रमांक किंवा फोन पडताळणी जुळली नाही.",
+  "Pooja and Package are required for standard bookings.": "नियमित बुकिंगसाठी पूजा आणि पॅकेज आवश्यक आहे.",
+  "Pooja not found": "पूजा सापडली नाही",
+  "Selected package not found": "निवडलेले पॅकेज सापडले नाही",
+  "A name is required for custom bookings.": "विशेष बुकिंगसाठी नाव आवश्यक आहे.",
+  "Appointment start time is invalid.": "भेटीची सुरुवातीची वेळ अवैध आहे.",
+  "Date of birth must be a valid date in the past.": "जन्मतारीख मागील वैध तारीख असणे आवश्यक आहे."
+}

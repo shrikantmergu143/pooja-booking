@@ -28,10 +28,10 @@ export class Appointment {
   @Column({ type: 'varchar', length: 180 })
   place: string;
 
-  @Column({ type: 'date' })
+  @Column({ type: 'date', nullable: true })
   appointmentDate: string;
 
-  @Column({ type: 'time' })
+  @Column({ type: 'time', nullable: true })
   appointmentTime: string;
 
   @Column({ type: 'varchar', length: 30 })

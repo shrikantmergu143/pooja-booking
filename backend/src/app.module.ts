@@ -12,6 +12,7 @@ import { PanditsModule } from './pandits/pandits.module';
 import { AdminOperationsModule } from './admin-operations/admin-operations.module';
 import { SiteContentModule } from './site-content/site-content.module';
 import { AppointmentsModule } from './appointments/appointments.module';
+import { I18nModule } from './common/i18n/i18n.module';
 
 @Module({
   imports: [
@@ -19,6 +20,7 @@ import { AppointmentsModule } from './appointments/appointments.module';
       isGlobal: true,
       load: [databaseConfig],
     }),
+    I18nModule,
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],

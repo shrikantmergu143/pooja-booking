@@ -19,6 +19,10 @@ import { NotificationLog } from './entities/notification-log.entity';
 
 const DEFAULT_SETTINGS = {
   businessName: 'Pooja Booking',
+  websiteName: 'Vishnusudarshana',
+  websiteSubtitle: 'Dharmik Sanskar Kendra',
+  websiteDomain: 'https://www.vishnusudarshana.com',
+  logoUrl: '',
   helplinePhone: '',
   supportEmail: '',
   serviceAddress: '',
